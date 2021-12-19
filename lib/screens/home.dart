@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutterhttp/screens/all_category.dart';
 import 'package:flutterhttp/screens/product_detail.dart';
 import 'package:flutterhttp/services/apiService.dart';
 
@@ -12,6 +13,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Http App'),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>AllCategory()));
+          }, icon: Icon(Icons.view_list)),
+        ],
       ),
       body: FutureBuilder(
         future: ApiService().getAllProduct(),

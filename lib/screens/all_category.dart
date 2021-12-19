@@ -14,7 +14,27 @@ class AllCategory extends StatelessWidget {
         future: ApiService().getAllProductCategory(),
         builder: (contex, AsyncSnapshot snapshot){
           if(snapshot.hasData){
-            
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (contex,index){
+                return InkWell(
+                  onTap: (){
+                    
+                  },
+                  child: Card(
+                    elevation: 2,
+                    margin: EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    child: Container(
+                      padding: EdgeInsets.all(40),
+                      child: Center(
+                        child: Text(snapshot.data[index].toString().toUpperCase(),style: TextStyle(fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                );
+               }
+              );
           }
           return Center(child: CircularProgressIndicator());
         }
