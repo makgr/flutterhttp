@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Http get'),
+        title: Text('Http App'),
       ),
       body: FutureBuilder(
         future: ApiService().getAllProduct(),
