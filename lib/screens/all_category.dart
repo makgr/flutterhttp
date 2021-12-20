@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhttp/screens/category-product.dart';
 import 'package:flutterhttp/services/apiService.dart';
 
 class AllCategory extends StatelessWidget {
@@ -19,7 +20,7 @@ class AllCategory extends StatelessWidget {
               itemBuilder: (contex,index){
                 return InkWell(
                   onTap: (){
-                    
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryProductScreen(snapshot.data[index])));
                   },
                   child: Card(
                     elevation: 2,

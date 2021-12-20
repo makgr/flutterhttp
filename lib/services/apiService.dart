@@ -27,5 +27,13 @@ class ApiService{
     return json.decode(response.body);
   }
 
+  Future getSingleProductByCategory(String catName) async{
+    final productCategoryUrl = Uri.parse("https://fakestoreapi.com/products/category/$catName");
+    final response = await http.get(productCategoryUrl);
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
 
 }
