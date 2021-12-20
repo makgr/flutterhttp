@@ -16,32 +16,34 @@ class ProductDetail extends StatelessWidget {
         future: ApiService().getSingleProductDetails(id),
         builder: (contex,AsyncSnapshot snapshot){
           if(snapshot.hasData){
-            return Container(
-              margin: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 30,),
-                  Image.network(snapshot.data['image'],height: 200, width: double.infinity,),
-                  SizedBox(height: 30,),
-                  Center(
-                    child: Text('BDT '+snapshot.data['price'].toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,),),
-                  ),
-                  
-                  SizedBox(height: 10,),
-                  Text(snapshot.data['title'],style: TextStyle(
-                    fontSize: 25,
-                  ),),
-                  Chip(
-                    label: Text(snapshot.data['category'].toString(),style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                    ),),
-                    backgroundColor: Colors.blueGrey,
-                    ),
+            return SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     SizedBox(height: 30,),
-                    Text(snapshot.data['description']),
-                ],
+                    Image.network(snapshot.data['image'],height: 200, width: double.infinity,),
+                    SizedBox(height: 30,),
+                    Center(
+                      child: Text('BDT '+snapshot.data['price'].toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,),),
+                    ),
+                    
+                    SizedBox(height: 10,),
+                    Text(snapshot.data['title'],style: TextStyle(
+                      fontSize: 25,
+                    ),),
+                    Chip(
+                      label: Text(snapshot.data['category'].toString(),style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),),
+                      backgroundColor: Colors.blueGrey,
+                      ),
+                      SizedBox(height: 30,),
+                      Text(snapshot.data['description']),
+                  ],
+                ),
               ),
             );
           }
