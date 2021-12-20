@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:flutterhttp/screens/all_category.dart';
+import 'package:flutterhttp/screens/cartScreen.dart';
 import 'package:flutterhttp/screens/product_detail.dart';
 import 'package:flutterhttp/services/apiService.dart';
 
@@ -16,7 +17,12 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>AllCategory()));
-          }, icon: Icon(Icons.view_list)),
+          },
+           icon: Icon(Icons.view_list)),
+           IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen()));
+          },
+           icon: Icon(Icons.shopping_cart)),
         ],
       ),
       body: FutureBuilder(
