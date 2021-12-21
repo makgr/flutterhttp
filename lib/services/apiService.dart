@@ -43,6 +43,17 @@ class ApiService{
     return json.decode(response.body);
   }
 
+  Future userLogin(String username, String password) async{
+    final loginUrl = Uri.parse("https://fakestoreapi.com/auth/login");
+    final response = await http.post(loginUrl, body:{
+      'username':username,
+      'password':password
+    });
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
 
 
 }

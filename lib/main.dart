@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterhttp/screens/home.dart';
+import 'package:flutterhttp/screens/login_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -8,6 +9,6 @@ void main() {
       primarySwatch: Colors.amber,
     ),
     title: 'Http app',
-    home: HomePage(),
+    home: LoginScreen(),
   ));
 }
