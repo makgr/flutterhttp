@@ -27,7 +27,10 @@ class CartScreen extends StatelessWidget {
                         title: Text(asyncSnapshot.data['title']),
                         subtitle: Text('Quantity: '+products[index]['quantity'].toString()),
                         // trailing: Text('Price: '+asyncSnapshot.data['price'].toString()),
-                        trailing: IconButton(onPressed: (){}, icon: Icon(Icons.delete, color: Colors.red)),
+                        trailing: IconButton(onPressed: ()async{
+                          await ApiService().deleteCart('1');
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('product deleted successfully.')));
+                        }, icon: Icon(Icons.delete, color: Colors.red)),
                       );
                     }
                     return LinearProgressIndicator();

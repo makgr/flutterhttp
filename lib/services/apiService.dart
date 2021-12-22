@@ -54,6 +54,31 @@ class ApiService{
     return json.decode(response.body);
   }
 
+  Future updateCart(int userId,int productId) async{
+    final updateCartUrl = Uri.parse("https://fakestoreapi.com/carts/$userId");
+    final response = await http.put(updateCartUrl, body: {
+      'userId': '$userId',
+      'date': DateTime.now().toString(),
+      'products':[
+        {
+          'productId':'$productId',
+          'quantity': '1',
+        }
+      ].toString()
+    });
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
+  Future deleteCart(String userId)async{
+    final deleteCartUrl = Uri.parse("https://fakestoreapi.com/carts/$userId");
+    final response = await http.delete(deleteCartUrl);
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
 
 
 }
