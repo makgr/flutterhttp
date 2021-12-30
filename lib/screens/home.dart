@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutterhttp/models/product.dart';
 import 'package:flutterhttp/screens/all_category.dart';
 import 'package:flutterhttp/screens/cartScreen.dart';
 import 'package:flutterhttp/screens/product_detail.dart';
@@ -34,12 +35,13 @@ class HomePage extends StatelessWidget {
             child: ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (contex,index){
+                Product product = snapshot.data[index];
                 return ListTile(
-                  title: Text(snapshot.data[index]['title']),
-                  leading: Image.network(snapshot.data[index]['image'],height: 50,width: 50,),
-                  subtitle: Text("BDT "+snapshot.data[index]['price'].toString()),
+                  title: Text(product.title),
+                  leading: Image.network(product.image,height: 50,width: 50,),
+                  subtitle: Text("BDT "+product.price.toString()),
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (contex)=>ProductDetail(snapshot.data[index]['id'])));
+                    Navigator.push(context, MaterialPageRoute(builder: (contex)=>ProductDetail(product.id)));
                   },
                 );
                }

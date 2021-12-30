@@ -1,14 +1,25 @@
 import 'dart:convert';
 
+import 'package:flutterhttp/models/product.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService{
-  Future getAllProduct() async{
+  // Future getAllProduct() async{
+  //   final allProductUrl = Uri.parse("https://fakestoreapi.com/products");
+  //   final response = await http.get(allProductUrl);
+  //   // print(response.statusCode);
+  //   // print(response.body);
+  //   return json.decode(response.body);
+  // }
+  Future<List<Product>> getAllProduct() async{
     final allProductUrl = Uri.parse("https://fakestoreapi.com/products");
     final response = await http.get(allProductUrl);
-    // print(response.statusCode);
-    // print(response.body);
-    return json.decode(response.body);
+    List<Product> allproducts = [];
+    List body = json.decode(response.body);
+    body.forEach((product) { 
+      allproducts.add(Product.fromjson(product));
+    });
+    return allproducts;
   }
 
   Future getSingleProductDetails(int id) async{
@@ -79,6 +90,16 @@ class ApiService{
     return json.decode(response.body);
   }
 
+  Future userAuthentication(String username, String password) async{
+    final authUrl = Uri.parse("http://api.somewhere.io/");
+    final response = await http.post(authUrl, body: {
+      'username': username,
+      'password': password,
+    });
+    print(response.statusCode);
+    print(response.body);
+
+  }
 
 
 }
