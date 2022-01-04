@@ -22,12 +22,20 @@ class ApiService{
     return allproducts;
   }
 
+  // Future getSingleProductDetails(int id) async{
+  //   final singleProductUrl = Uri.parse("https://fakestoreapi.com/products/$id");
+  //   final response = await http.get(singleProductUrl);
+  //   print(response.statusCode);
+  //   print(response.body);
+  //   return json.decode(response.body);
+  // }
   Future getSingleProductDetails(int id) async{
     final singleProductUrl = Uri.parse("https://fakestoreapi.com/products/$id");
     final response = await http.get(singleProductUrl);
     print(response.statusCode);
     print(response.body);
-    return json.decode(response.body);
+    var body = json.decode(response.body);
+    return Product.fromjson(body);
   }
 
  Future getAllProductCategory() async{
